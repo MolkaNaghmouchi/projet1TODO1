@@ -1,16 +1,25 @@
 <h1>TODO1 EXERCIE1 </h1>
-<div *ngFor="let p of listeemploi">
+<table class="table" >
 
-  {{p.reference}}
-  {{p.titre}}
-  {{p.entreprise}}
-  {{p.etat}}
+  <tr><th>reference</th><th>titre</th><th>entreprise</th> <th>etat</th> 
+<tr *ngFor="let p of listeemploi">
+
+  <td>{{p.reference}}</td>
+  <td>{{p.titre}}</td>
+  <td>{{p.entreprise}}</td>
+  <td>{{p.etat}}</td>
+ 
+
+
+
   <input type="submit" value="postuler" [disabled]="p.etat==false">
-</div>
+</tr>
+</table>
 <hr>
 <button (click)="bilan()">Bilan</button>
 <hr>
-<input type="text"  [(ngModel)]="search">
+<label>Search :</label>
+<input type="text"  [(ngModel)]="search" placeholder="Search">
 <div *ngFor="let p of listeemploi">
   <div *ngIf="p.entreprise==search ||search==''">
   {{p.reference}}
@@ -20,5 +29,3 @@
   </div>
 </div>
 <h1>TODO1 EXERCIE2 </h1>
-
-

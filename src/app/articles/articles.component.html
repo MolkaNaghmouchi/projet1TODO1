@@ -1,35 +1,46 @@
 <h1>{{ titre }}</h1>
-<div *ngFor="let p of filtredArticles">
-
-  {{p.titre}}
-  {{p.contenu}}
-  {{p.auteur}}
-  {{p.date}}
-  {{p.categorie}}
-</div>
-<hr>
-<div *ngFor="let p of filtredArticles">
-  <div *ngIf="p.categorie !== 'Travail'">
-    
+<div *ngFor="let p of listeArticles">
     {{p.titre}}
     {{p.contenu}}
     {{p.auteur}}
     {{p.date}}
     {{p.categorie}}
-  </div>
+</div>
+<hr>
+<div *ngFor="let p of listeArticles">
+    <div *ngIf="p.categorie !== 'Travail'">
+        <fieldset>
+            <legend>{{p.titre}}</legend>
+        {{p.contenu}}
+        {{p.auteur}}
+        {{p.date}}
+        {{p.categorie}}</fieldset>
+    </div>
+</div>
+<hr>
+<div *ngFor="let p of listeArticles">
+    <div [ngStyle]="{'backgroundColor':p.categorie=='Education' ? 'blue':'white'}">
+
+        <fieldset><legend>{{p.titre}}</legend>
+        {{p.contenu}}
+        {{p.auteur}}
+        {{p.date}}
+        {{p.categorie}}</fieldset>
+    </div>
 </div>
 <hr>
 <div *ngFor="let p of filtredArticles">
-  <div [ngStyle]="{'backgroundColor':p.categorie=='Education' ? 'blue':'white'}">
-    <div *ngIf="p.categorie!='Travail'">
-
-      {{p.titre}}
-      {{p.contenu}}
-      {{p.auteur}}
-      {{p.date}}
-      {{p.categorie}}
+    <div [ngStyle]="{'backgroundColor':p.categorie=='Education' ? 'blue':'white'}">
+        <div *ngIf="p.categorie!='Travail'">
+        <fieldset><legend>{{p.titre}}</legend>
+        {{p.contenu}}
+        {{p.auteur}}
+        {{p.date}}
+        {{p.categorie}}</fieldset>
+        </div>
     </div>
-  </div>
 </div>
-<input type="text" placeholder={{listeArticles.length}}  [(ngModel)]="infrOuegal" (keyup)="changeTheArray()">
-{{infrOuegal}}
+<div>
+    <input type="text" placeholder={{listeArticles.length}} [(ngModel)]="infrOuegal" (keyup)="changeTheArray()">
+    {{infrOuegal}}
+</div>
